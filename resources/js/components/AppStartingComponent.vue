@@ -30,7 +30,7 @@
             Echo.channel('notification')
                 .listen('MessageNotification', (e ,r) => {
                     console.log( 'MESSAGE: ',e ,r);
-                    this.message = "Message by PUSHER";
+                    this.message = "Message by PUSHER " + e.message;
                     this.mclass = ' bg-red-600'
                 });
         }

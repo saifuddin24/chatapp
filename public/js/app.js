@@ -19903,7 +19903,7 @@ __webpack_require__.r(__webpack_exports__);
 
     Echo.channel('notification').listen('MessageNotification', function (e, r) {
       console.log('MESSAGE: ', e, r);
-      _this.message = "Message by PUSHER";
+      _this.message = "Message by PUSHER " + e.message;
       _this.mclass = ' bg-red-600';
     });
   }

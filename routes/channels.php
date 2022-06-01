@@ -18,6 +18,6 @@ use Illuminate\Support\Facades\Broadcast;
 //});
 //
 
-Broadcast::channel('notification.{message}', function ($message) {
+Broadcast::channel('notification', function ($message) {
     return $message;
 });

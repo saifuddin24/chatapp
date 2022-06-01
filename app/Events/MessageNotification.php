@@ -28,6 +28,16 @@ class MessageNotification implements ShouldBroadcast
     }
 
     /**
+     * Get the data to broadcast.
+     *
+     * @return array
+     */
+    public function broadcastWith()
+    {
+        return ['message' => $this->message];
+    }
+
+    /**
      * Get the channels the event should broadcast on.
      *
      * @return \Illuminate\Broadcasting\Channel|array

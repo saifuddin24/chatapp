@@ -18,5 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get("/event/{message}", function ( $message ){
-    event( new \App\Events\MessageNotification( $message ));
+    event( new \App\Events\MessageNotification(
+        \Carbon\Carbon::now()->addHours(6)->format('h:i:sa') . ': '. $message )
+    );
 });
