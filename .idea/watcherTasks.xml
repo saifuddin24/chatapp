@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectTasksOptions">
+<<<<<<< HEAD
     <TaskOptions isEnabled="true">
+=======
+    <TaskOptions isEnabled="false">
+>>>>>>> 185358a609d0a25febbecf0e888d724d65a1d4d3
       <option name="arguments" value="$FileName$:$FileNameWithoutExtension$.css" />
       <option name="checkSyntaxErrors" value="true" />
       <option name="description" />

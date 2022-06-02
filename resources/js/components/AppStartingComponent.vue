@@ -5,10 +5,10 @@
                 <div class="card">
                     <div class="card-header">Example Component</div>
 
-                    <div class="card-body">
-                        I'm an example component.
+                    <div class="card-body bg-green-500" :class="mclass">
+                        I'm an example component.<div>{{ message }}</div>
                     </div>
-                    <div>{{ message }}</div>
+
                 </div>
             </div>
         </div>
@@ -19,7 +19,8 @@
     export default {
         data(){
             return {
-                message: ''
+                message: '',
+                mclass :''
             }
         },
         mounted() {
@@ -27,9 +28,10 @@
         },
         created() {
             Echo.channel('notification')
-                .listen('MessageNotification', (e) => {
-                    // alert('I am refreshed myself!');
-                    this.message = "Message by PUSHER";
+                .listen('MessageNotification', (e ,r) => {
+                    console.log( 'MESSAGE: ',e ,r);
+                    this.message = "Message by PUSHER " + e.message;
+                    this.mclass = ' bg-red-600'
                 });
         }
     }

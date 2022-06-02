@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('layouts.app');
 });
 
-Route::get("/event", function (){
-    event( new \App\Events\MessageNotification('This is out first broadcast message!'));
+Route::get("/event/{message}", function ( $message ){
+    event( new \App\Events\MessageNotification(
+        \Carbon\Carbon::now()->addHours(6)->format('h:i:sa') . ': '. $message )
+    );
 });
