@@ -15,20 +15,12 @@ class CreateConversationUsersTable extends Migration
     {
         Schema::create('conversation_users', function (Blueprint $table) {
             $table->id();
-
-            $table->unsignedBigInteger('conversation_id');
-            $table->foreign('conversation_id')
-                ->references('id')
-                ->on('conversations')->cascadeOnUpdate();
-
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')->cascadeOnUpdate();
-
-            $table->timestamps();
-
+            $table->unsignedBigInteger('conversation_id')->index();
+            $table->unsignedBigInteger('user_id')->index();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
             $table->index(['conversation_id', 'user_id']);
+            $table->unique(['conversation_id', 'user_id']);
         });
     }
 

@@ -21,9 +21,18 @@ class CreateMessagesTable extends Migration
                 ->references('id')
                 ->on('users')->cascadeOnUpdate();
 
-            $table->morphs('message_to','message_peers_index' );
             $table->text('text')->nullable();
+
+            $table->unsignedBigInteger('conversation_id');
+            $table->foreign('conversation_id')
+                ->references('id')
+                ->on('conversations')->cascadeOnUpdate();
+
+            $table->enum('message_type', ['message','attachment','information','warning'])
+                ->nullable()->comment("message','attachment','information','warning");
+            $table->unsignedTinyInteger('message_attachment_type')->nullable();
             $table->timestamps();
+            $table->index([ 'owner_id', 'conversation_id']);
         });
     }
 
